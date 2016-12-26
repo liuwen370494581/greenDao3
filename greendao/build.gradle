@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+  compileSdkVersion 23
+  buildToolsVersion "25.0.0"
+
+  defaultConfig {
+    applicationId "end.liuwen.com.greendao"
+    minSdkVersion 22
+    targetSdkVersion 23
+    versionCode 1
+    versionName "1.0"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+//greendao配置
+greendao {
+  schemaVersion 1                             //版本号，升级时可配置
+  daoPackage 'end.liuwen.com.greendao.dao'     //包名
+  targetGenDir 'src/main/java'                 //生成目录
+}
+
+dependencies {
+  compile fileTree(include: ['*.jar'], dir: 'libs')
+  testCompile 'junit:junit:4.12'
+  compile 'com.android.support:appcompat-v7:23.4.0'
+  compile 'com.android.support:recyclerview-v7:23.4.0'
+  compile 'org.greenrobot:greendao:3.1.1'
+  compile 'cn.bingoogolapple:bga-adapter:1.1.5@aar'
+  compile 'com.android.support:cardview-v7:23.0.1'
+}
