@@ -5,8 +5,9 @@ greenDao3 数据库配置、增删改查及升级 简单打造本地数据库
 * 步骤
 * 1.依赖 首先在project项目中的build.gradle 中添加如下代码
 
-#### 
-buildscript {
+
+```java
+   buildscript {
   repositories {
     jcenter()
   }
@@ -19,3 +20,5 @@ buildscript {
     // in the individual module build.gradle files
   }
 }
+```
+
