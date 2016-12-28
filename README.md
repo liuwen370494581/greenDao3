@@ -57,4 +57,21 @@ dependencies {
 ```
 
 * 3.然后可以新建一个实体类 然后点击工具栏中的build-----make project 会自动生成相应的dao类
+
+
+```java
+
+@Entity
+public class UserInfo {
+
+    @Id
+    public long id;
+    public String name;
+    public String tel;
+    public String address;
+}
+```
+
+* 切记 id一定是long型的 不然插入数据的时候回报错的
+
 * 4.使用方法可以看代码了。
