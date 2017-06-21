@@ -42,9 +42,9 @@ greenDao3 数据库配置、增删改查及升级 简单打造本地数据库
 }
 //greendao配置
 greendao {
-  schemaVersion 1                              //版本号，升级时可配置
-  daoPackage 'end.liuwen.com.greendao.dao'     //你对应的包名
-  targetGenDir 'src/main/java'                 //生成目录
+   schemaVersion 6                       //版本号，升级时可配置
+    daoPackage 'star.liuwen.com.endgreendao3.Dao'     //包名
+    targetGenDir 'src/main/java'                 //生成目录
   
   
   
