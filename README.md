@@ -94,5 +94,7 @@ public class MySQLiteOpenHelper extends DaoMaster.OpenHelper {
 }
 ```
 ![](https://github.com/liuwen370494581/greenDao3/blob/master/image/IMG_0049_%E5%89%AF%E6%9C%AC.jpg) 
-* 上面图 我是升级了一个desc的字段 发现之前的数据依旧保存 记得 要升级某个实体schemaVersion 一定要大于当前版本 也就说当前是6 这里需要设置为7 升级字段   才会有保存之前数据的作用 楼主我已经试验了好几次 才发现有这样的问题。
+
+* 上面图 我是升级了一个desc的字段 发现之前的数据依旧保存 记得 要添加某个实体的字段  schemaVersion 一定要大于当前版本 也就说当前版本是6 那么升级的需   要设置为7  才会有保存之前数据的作用 大家可以多试几次.
+
 * 5.使用方法可以看代码了。
