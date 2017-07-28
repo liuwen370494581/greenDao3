@@ -42,7 +42,7 @@ greenDao3 数据库配置、增删改查及升级 简单打造本地数据库
 }
 //greendao配置
 greendao {
-   schemaVersion 6                       //版本号，升级时可配置
+    schemaVersion 6                       //版本号，升级时可配置
     daoPackage 'star.liuwen.com.endgreendao3.Dao'     //包名
     targetGenDir 'src/main/java'                 //生成目录
   
@@ -62,16 +62,41 @@ dependencies {
 ```java
 
 @Entity
-public class UserInfo {
-
-    @Id
-    public long id;
-    public String name;
-    public String tel;
-    public String address;
+public class Test {
+ @Id
+    private Long id;
+    private int url;
+    private String name;
+    private String desc;
 }
 ```
 
 * 切记 id一定是long型的 不然插入数据的时候会报错的
 
-* 4.使用方法可以看代码了。
+
+* 4.升级不删除老数据 
+```java
+
+public class MySQLiteOpenHelper extends DaoMaster.OpenHelper {
+
+
+    public MySQLiteOpenHelper(Context context, String name, SQLiteDatabase.CursorFactory factory) {
+        super(context, name, factory);
+    }
+
+    @Override
+    public void onUpgrade(Database db, int oldVersion, int newVersion) {
+        Log.e("greenDAO",
+                "Upgrading schema from version " + oldVersion + " to " + newVersion + " by migrating all tables data");
+         //完全自动升级本地数据库 要升级那个bean 只需要调用下面这个方法 
+        // MigrationHelper.getInstance().migrate(db, xxx.class);
+        MigrationHelper.getInstance().migrate(db, TestDao.class);
+    }
+}
+```
+
+![](https://github.com/liuwen370494581/greenDao3/blob/master/image/IMG_0049_%E5%89%AF%E6%9C%AC.jpg) 
+
+* 上面图 我是升级了一个desc的字段 发现之前的数据依旧保存 记得 要添加某个实体的字段  schemaVersion 一定要大于当前版本 也就说当前版本是6 那么升级的需   要设置为7  才会有保存之前数据的作用 大家可以多试几次.
+
+* 5.使用方法可以看代码了。
